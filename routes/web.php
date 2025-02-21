@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\WebController;
+use App\Http\Controllers\WebViewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'APIController@index');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+Route::get('/about', 'WebViewsController@about')->name('about');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/contact', 'WebViewsController@contact')->name('contact');
+
+Route::get('/login', 'WebViewsController@login')->name('login');
+
+Route::get('/register', 'WebViewsController@register')->name('register');
 
 Route::get('/post/{id}', 'APIController@show')->name('post.show');
