@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Throwable; // Add this line to import the global Throwable interface
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -30,10 +31,12 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return void
      */
-    public function report(Exception $exception)
+    // In app/Exceptions/Handler.php
+    public function report(Throwable $e)
     {
-        parent::report($exception);
+        parent::report($e);
     }
+
 
     /**
      * Render an exception into an HTTP response.
@@ -42,10 +45,12 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+    // In app/Exceptions/Handler.php
+    public function render($request, Throwable $e)
     {
-        return parent::render($request, $exception);
+        return parent::render($request, $e);
     }
+
 
     /**
      * Convert an authentication exception into an unauthenticated response.
